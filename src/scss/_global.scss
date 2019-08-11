@@ -1,0 +1,17 @@
+/**
+ * Global app/site styles
+ * =================================
+ */
+body {
+	// background-color: var(--purple);
+	background-color: #fff;
+}
+
+/**
+ * Default layout container
+ */
+.l-container {
+	width: 90%;
+	max-width: #{$layout-max-width}px;
+	margin: 0 auto;
+}

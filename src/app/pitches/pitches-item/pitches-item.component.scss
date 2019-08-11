@@ -1,0 +1,34 @@
+:host {
+    padding: 1em;
+}
+
+.backBtn {
+    margin: 1em;
+}
+
+.pitch {
+    display: flex;
+}
+    .pitch-main {
+        width: 70%;
+        padding: 1em;
+    }
+        .pitch-facilities {
+            list-style: none;
+        }
+
+    .pitch-sidebar {
+        width: 30%;
+        padding: 1em;
+
+        .card {
+            margin-bottom: 1em;
+        }
+    }
+        .openingHours {
+            td {
+                padding: 0.2em 1em;
+            }
+        }
+
+

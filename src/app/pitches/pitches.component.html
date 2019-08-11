@@ -1,0 +1,66 @@
+<mat-vertical-stepper [linear]="false" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+
+        <ng-template matStepLabel>Where are you?</ng-template>
+        <pf-location-search (locationChange)="pitchesService.setFilter('location', $event)"></pf-location-search>
+
+        <div>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>What sport do you want to play? {{chosenSportTest.value}}</ng-template>
+            <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group"
+                formControlName="chosenSport" #chosenSportTest>
+                <mat-radio-button class="example-radio-button" *ngFor="let sport of pitchesService.sportOptions" [value]="sport">
+                    {{sport}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+</mat-vertical-stepper>
+
+<button mat-raised-button color="primary" (click)="pitchesService.loadPitches()">Reload Pitches</button>
+
+<!-- <button mat-button (click)="pitchesService.startSportsScrape()">Scrape</button> -->
+
+<section *ngIf="pitchesService.pitches$ | async as pitches" class="pitchList">
+
+    <article *ngFor="let pitch of pitches" class="pitchCard">
+        <div class="pitchCard-img">
+            <img [src]="pitch.attributes.images.medium">
+        </div>
+        <div class="pitchCard-content">
+            <h1>{{pitch.attributes.name}}</h1>
+            <h2>{{pitch.attributes.sport}}</h2>
+            <p>
+                {{pitchesService.venueAddress(pitch.relationships.venues.data)}}<br>
+                <span><strong>Format:</strong> {{pitch.attributes.format}}</span><br>
+                <span><strong>Surface:</strong> {{pitch.attributes.surface}}</span>
+            </p>
+
+            <ul class="pitchCard-facilities">
+                <li *ngFor="let facility of pitch.attributes.facilities">
+                    <i class="material-icons">done_outline</i>{{facility}}
+                </li>
+            </ul>
+
+            <a mat-raised-button color="primary" [routerLink]="['/pitches',pitch.id]">Explore venue</a>
+
+        </div>
+        <i *ngIf="pitch.attributes.partner" class="material-icons">
+            verified_user
+        </i>
+    </article>
+
+</section>

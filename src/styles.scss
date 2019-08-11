@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*
+ * Mixins, helpers and functions
+ */
+// @import "node_modules/@kickoff/utils.scss/scss/index.scss"; // with npm-sass
+@import "node_modules/include-media/dist/_include-media.scss";
+
+
+/**
+ * Core variables
+ * Edit your color palette and app vars before your begin
+ */
+@import 'scss/color-palette';
+@import 'scss/variables';
+
+
+/**
+ * CSS resets
+ */
+@import "scss/reset";
+
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+/**
+ * Typography styles
+ * See https://trykickoff.com/demos/typography.html for more info
+ */
+@import "scss/typography";
+
+
+/**
+ * Global styles
+ */
+@import "scss/global";
+
+
+/**
+ * Helper/utility classes
+ */
+@import "scss/helper-classes";
+
+html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

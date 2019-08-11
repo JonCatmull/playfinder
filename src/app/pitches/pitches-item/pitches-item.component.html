@@ -1,0 +1,67 @@
+<a mat-raised-button color="primary" routerLink="../" class="backBtn">Back to list</a>
+
+<article *ngIf="activePitch$ | async as pitch" class="pitch">
+
+    <div class="pitch-main">
+
+        <h1>{{pitch.attributes.name}}</h1>
+        <h2>{{pitch.attributes.sport}}</h2>
+
+        <img [src]="pitch.attributes.images.medium">
+
+        <p>{{pitch.attributes.about}}</p>
+        <p>
+            <span><strong>Format:</strong> {{pitch.attributes.format}}</span><br>
+            <span><strong>Surface:</strong> {{pitch.attributes.surface}}</span>
+        </p>
+
+        <ul class="pitch-facilities">
+            <li *ngFor="let facility of pitch.attributes.facilities">
+                <i class="material-icons">done_outline</i>{{facility}}
+            </li>
+        </ul>
+
+        <pf-pitches-slots [pitch]="pitch"></pf-pitches-slots>
+
+    </div>
+
+    <div *ngIf="activeVenue$ | async as venue" class="pitch-sidebar">
+
+        <mat-card class="card">
+            <mat-card-header>
+                <div mat-card-avatar><i class="material-icons">pin_drop</i></div>
+                <mat-card-title>Address</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    {{venue.attributes.name}}<br>
+                    {{venue.attributes.address1}}<br>
+                    {{venue.attributes.address2}}<br>
+                    {{venue.attributes.postcode}}
+                </p>
+                <p><strong>Parking:</strong> {{venue.attributes.parking_type}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <a mat-button [href]="'tel:'+venue.attributes.contact_number">
+                    <i class="material-icons">phone</i> {{venue.attributes.contact_number}}
+                </a>
+            </mat-card-actions>
+        </mat-card>
+
+        <mat-card class="card openingHours">
+            <mat-card-header>
+                <div mat-card-avatar><i class="material-icons">business</i></div>
+                <mat-card-title>Opening Hours</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <tbody class="">
+                    <tr *ngFor="let day of venue.attributes.opening_hours | keyvalue">
+                        <td>{{day.key}}:</td><td>{{day.value}}</td>
+                    </tr>
+                </tbody>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+
+</article>
