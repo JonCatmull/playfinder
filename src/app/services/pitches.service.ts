@@ -11,7 +11,7 @@ import { Venue } from '../models/venue';
 const initialFiltersState: Map<string, string> = new Map([
   ['location', 'London'],
   ['sport', 'cricket'],
-  ['radius',''], // '5mi'
+  ['radius', ''], // '5mi'
   ['start', ''],
   ['end', '']
 ]);

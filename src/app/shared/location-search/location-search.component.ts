@@ -2,7 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
-import { GeolocateService } from 'src/app/services/geolocate.service';
+
+import { GeolocateService } from '../../services/geolocate.service';
 
 @Component({
   selector: 'pf-location-search',

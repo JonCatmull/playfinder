@@ -1,6 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PitchesComponent } from './pitches.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
+import { MaterialModule } from '../material/material.module';
+// import { DayPilotModule } from 'daypilot-pro-angular';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('PitchesComponent', () => {
   let component: PitchesComponent;
@@ -8,6 +16,16 @@ describe('PitchesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NoopAnimationsModule,
+        RouterModule,
+        HttpClientModule,
+        CommonModule,
+        SharedModule,
+        MaterialModule,
+        // DayPilotModule,
+        ReactiveFormsModule
+      ],
       declarations: [ PitchesComponent ]
     })
     .compileComponents();
